@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package usermodel;
+option go_package = "./userRpcModel";
+
+message Login{
+
+}

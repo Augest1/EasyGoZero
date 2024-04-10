@@ -1,0 +1,30 @@
+syntax = "v1"
+import "user_model.api"
+info(
+	title: "type title here"
+	desc: "type desc here"
+	author: "type author here"
+	email: "type email here"
+	version: "type version here"
+)
+
+@server (
+	group :user
+)
+
+service user{
+	@doc "登录"
+	@handler login
+	post /login (ReqLogin)returns(ResLogin)
+}
+
+@server(
+	jwt: Auth
+	middleware :Test
+	group: user
+)
+service user {
+	@doc "得到用户信息"
+	@handler getUserInfo
+	get /user/info  returns (ResUserInfo)
+}

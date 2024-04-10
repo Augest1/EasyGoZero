@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package user;
+option go_package = "./userRpcModel";
+//import "user_model.proto";
+
+message ReqLogin {
+  int64 identity_kind=1;
+  string identifier=2;
+  string credential=3;
+}
+message ReqRegister {
+  int64 identity_kind=1;
+  string identifier=2;
+  string credential=3;
+}
+message ResLogin {
+  string token=1;
+}
+message ResRegister {
+  string token=1;
+}
+
+service Login {
+  rpc register(ReqRegister) returns (ResRegister);
+  rpc login(ReqLogin) returns (ResLogin);
+}
+service User{
+  rpc getUserInfo(ReqGetUserInfo)returns(User);
+}
